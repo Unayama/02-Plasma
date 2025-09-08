@@ -1,0 +1,10 @@
+services:
+  tex:
+    image: latex-builder
+    pull_policy: never  # <-- これを追加
+    container_name: tex
+    tty: true
+    # platform: linux/arm64
+    volumes:
+      - .:/workdir
+    working_dir: /workdir
