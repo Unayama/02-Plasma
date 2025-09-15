@@ -1,6 +1,6 @@
 services:
   tex:
-    image: latex-builder
+    image: tex-builder
     pull_policy: never  # <-- これを追加
     container_name: tex
     tty: true

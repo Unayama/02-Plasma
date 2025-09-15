@@ -1,0 +1,101 @@
+\documentclass[dvipdfmx]{jsarticle}
+
+% 警告消す用
+\usepackage{silence}
+\WarningFilter{caption}{Unknown document}
+
+% 文字
+\usepackage{ulem}
+\usepackage{url}
+\usepackage{typearea}
+\usepackage{enumitem}
+\usepackage{ascmac}
+\usepackage{fancybox}
+% 記号
+\usepackage{latexsym}
+\usepackage{amssymb}
+% 数式
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{here}
+% 表
+\usepackage{multicol}
+% 段落
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+% フォント,カラー
+\usepackage[T1]{fontenc}
+\usepackage[dvipdfm]{color}
+
+\newcommand{\eqlab}[1]{式（\ref{eq:#1}）}%式の参照構文
+\newcommand{\figlab}[1]{図(\ref{fig:#1})}%図の参照構文
+\newcommand{\tablab}[1]{表(\ref{tab:#1})}%表の参照構文
+\captionsetup{compatibility=false}
+\catcode`_ = \active
+\newcommand_[1]{\sb{\mathrm{ #1}}}
+
+\typearea{12}
+
+\begin{document}
+\section{理論および実験の背景}
+\subsection{放電の形態}
+\subsubsection*{放電の電圧-電流特性}
+放電は電流の大きさに応じて形態が段階的に変化する。初期の暗流やタウンゼント放電から始まり、前期グロー、正規グロー、異常グロー、最後にアーク放電へと至る。各領域では発光状態や電圧特性に明確な違いがある。図\ref{fig:1}に一般的な電流－電圧特性を示す
+ \figlab{fig:1}に一般的な電流ー電圧特性を示す。
+
+ 
+ \begin{figure}[H]
+ \centering
+ \includegraphics[scale=0.4]{assets/IV-1.png}
+ \caption{Current–Voltage Characteristics of Gas Discharge at Low Pressure}\label{fig:1}
+ \end{figure}
+図中、$I < 10^{-10}\,\mathrm{[A]}$ では暗流が流れる。暗流とは、外部電界印加下で自然放射線や熱電子によって生じたわずかなキャリアが移動することで生じる微小電流であり、発光を伴わない。電圧に対して電流は指数的に増加するが、放電はまだ開始していない。
+
+$I \approx 10^{-10}\,\mathrm{[A]}$ 付近において、絶縁破壊が生じる。電子が十分に加速されて気体分子を電離できるようになり、放電が開始する。この時点で電子の移動が活発化するため、電流が急増し、電圧は低下する。
+
+$I = 10^{-10} \sim 10^{-5}\,\mathrm{[A]}$ の領域ではタウンゼント放電が支配的となる。この領域では電子衝突による雪崩電離（Townsend電子雪崩）が進行するが、発光はほとんど見られない。電圧はおおよそ一定に保たれる。
+
+$I = 10^{-5} \sim 10^{-4}\,\mathrm{[A]}$ では前期グロー放電が生じる。これはタウンゼント放電から正規グロー放電へ移行する中間的な領域であり、発光が部分的に現れる。電流増加に伴い電圧は低下する。
+$I = 10^{-4} \sim 10^{-1}\,\mathrm{[A]}$ では正規グロー放電が成立する。発光が電極全体に広がり、陰極表面全域が光る。電圧はほぼ一定に維持され、安定した放電状態となる。正規グロー放電時の放電の様子を図\ref{fig:2}に示す。
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale=0.4]{assets/glow-discharge.png}
+ \caption{Potential distribution in glow discharge}
+ \label{fig:2}
+\end{figure}
+
+正規グロー放電では、電極間に特徴的な発光領域と暗部が形成される。陰極直近にはカソードグローが現れ、その外側に負グローが続く。さらに進むとファラデー暗部があり、その先には均一な発光を示す陽光柱（positive column）が広がる。これらの領域は、電子エネルギー分布や電場強度の違いに対応しており、電流密度と電圧分布を反映している。
+
+
+$I = 10^{-1} \sim 10^{0}\,\mathrm{[A]}$ では異常グロー放電に移行する。この領域では陰極表面がすでに飽和しているため、さらなる電流増加にはより大きな電圧が必要となり、電圧が再び上昇する。
+
+最後に、$I > 10\,\mathrm{[A]}$ ではアーク放電が発生する。強い白色発光と高温プラズマを伴い、電圧は急激に低下し、大電流が流れる。アークは強い熱を発生するため、溶接などの応用に利用される。
+\section{実験方法}
+    \subsection{低気圧放電の特性}
+        \subsubsection*{$I$-$V$特性の測定}
+            放電電流を変化させた場合の印加電圧の変化を測定する。以下の通りに実験をした。
+            \begin{enumerate}[label=\textbf{(\arabic*)}]
+            \item \figlab{fig:3}に示す実験回路を準備する。
+            \item 電極距離が5[cm]となるように調整する。
+            \item 吸引を開始し、管内気圧が100[Pa]になるようにピラニーゲージを参照しながらリークバルブを調整する。
+            \item 高圧を印加し、ポンプを温めることと、管内の空気を電離させることを目的として5分ほど放電させる。
+            \item 高圧電源の電圧を変化させて電流を変化させ、電流計と電圧計の値を読む。
+            \end{enumerate}
+            
+
+    \subsection{プラズマの測定と放電管内のプラズマの特性}
+
+\section{実験結果}
+\section{考察}
+\section{まとめ}
+
+
+
+% \bibliographystyle{junsrt}
+% \bibliography{main} 
+\end{document}
